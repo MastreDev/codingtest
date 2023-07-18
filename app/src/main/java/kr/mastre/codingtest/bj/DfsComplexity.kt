@@ -5,6 +5,7 @@ import java.io.OutputStreamWriter
 
 
 private var size = 0
+private var visited = arrayOf(booleanArrayOf())
 
 fun main(args: Array<String>) {
     size = readln().toInt()
