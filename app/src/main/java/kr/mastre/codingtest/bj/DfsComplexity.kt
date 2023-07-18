@@ -37,7 +37,7 @@ fun main(args: Array<String>) {
     bw.flush()
 }
 
-fun dfs(i: Int, j: Int, map: Array<IntArray>, count: MutableList<Int>) {
+private fun dfs(i: Int, j: Int, map: Array<IntArray>, count: MutableList<Int>) {
     visited[i][j] = true
     count.add(1)
 
