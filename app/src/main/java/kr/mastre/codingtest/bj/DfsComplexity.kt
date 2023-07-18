@@ -4,7 +4,7 @@ import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 
 
-var size = 0
+private var size = 0
 
 fun main(args: Array<String>) {
     size = readln().toInt()
@@ -36,12 +36,13 @@ fun main(args: Array<String>) {
     bw.flush()
 }
 
-fun dfs(i: Int, j: Int, map: Array<IntArray>, count : MutableList<Int>) {
+fun dfs(i: Int, j: Int, map: Array<IntArray>, count: MutableList<Int>) {
     visited[i][j] = true
     count.add(1)
 
-    val dx = intArrayOf(-1, 1, 0, 0)
-    val dy = intArrayOf(0, 0, -1, 1)
+    //안드로이드니까 좌, 상, 우, 하 로 변경해보자
+    val dx = intArrayOf(-1, 0, 1, 0)
+    val dy = intArrayOf(0, -1, 0, 1)
 
     for (k in 0 until 4) {
         val nx = i + dx[k]
@@ -54,7 +55,7 @@ fun dfs(i: Int, j: Int, map: Array<IntArray>, count : MutableList<Int>) {
 
 }
 
-fun checkOut(i: Int, j: Int): Boolean {
+private fun checkOut(i: Int, j: Int): Boolean {
     if (i < 0 || i >= size || j < 0 || j >= size) return false
     return true
 }
