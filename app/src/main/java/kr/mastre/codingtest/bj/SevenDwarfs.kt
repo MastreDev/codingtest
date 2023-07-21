@@ -18,9 +18,9 @@ fun main() {
             if (sumHeights - minus == totalHeight) {
                 heights[i] = -1
                 heights[j] = -1
-                heights.filter { it != -1 }.forEach { println(it) }
                 break@all
             }
         }
     }
+    heights.filter { it != -1 }.forEach { println(it) }
 }
