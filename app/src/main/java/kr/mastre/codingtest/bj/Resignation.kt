@@ -2,30 +2,32 @@ package kr.mastre.codingtest.bj
 
 fun main() {
     val n = readln().toInt()
-    val t = Array(n + 1) { 0 }
-    val p = Array(n + 1) { 0 }
+    val t = Array(n) { 0 }
+    val p = Array(n) { 0 }
 
-    for (i in 1..n) {
+    //Do BP
+    repeat(n) {
         readln().split(' ').map(String::toInt).also { (a, b) ->
-            t[i] = a
-            p[i] = b
+            t[it] = a
+            p[it] = b
         }
     }
+
     var answer = 0
-    fun dfs(day: Int, sumProfit: Int) {
-        if (day > n) {
-            answer = Math.max(answer, sumProfit)
+    fun calc(cur: Int, sum: Int) {
+        if (cur >= n) {
+            answer = maxOf(answer, sum)
             return
         }
-        val endDay = day + t[day]
-        if (endDay <= n + 1) {
-            dfs(endDay, sumProfit + p[day])
-        } else {
-            dfs(endDay, sumProfit)
+
+        for (i in cur + t[cur] until n + 1) {
+            calc(i, sum + p[cur])
         }
-        dfs(day + 1, sumProfit)
     }
-    dfs(1, 0)
+
+    for (i in 0 until n) {
+        calc(i, 0)
+    }
     println(answer)
 }
 
